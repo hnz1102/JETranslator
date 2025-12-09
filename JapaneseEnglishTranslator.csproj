@@ -1,0 +1,68 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net9.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UseWPF>true</UseWPF>
+      <!-- アプリケーションアイコン設定 -->
+    <ApplicationIcon>Resources\translator-icon.ico</ApplicationIcon>
+    
+    <!-- アプリケーション情報設定 -->
+    <AssemblyTitle>日本語⇔英語 AI翻訳アプリ</AssemblyTitle>
+    <AssemblyDescription>OpenAI GPTを使用した双方向翻訳および英文法チェックアプリケーション</AssemblyDescription>
+    <AssemblyCompany>AI Translation Tools</AssemblyCompany>
+    <AssemblyProduct>Japanese-English Translator</AssemblyProduct>
+    <AssemblyVersion>1.0.0.0</AssemblyVersion>
+    <FileVersion>1.0.0.0</FileVersion>
+    
+    <!-- ポータブルデプロイメント設定 -->
+    <SelfContained>true</SelfContained>
+    <PublishSingleFile>true</PublishSingleFile>
+    <PublishReadyToRun>true</PublishReadyToRun>
+    <PublishTrimmed>false</PublishTrimmed>
+    <IncludeNativeLibrariesForSelfExtract>true</IncludeNativeLibrariesForSelfExtract>
+    <EnableCompressionInSingleFile>true</EnableCompressionInSingleFile>
+    
+    <!-- デフォルトランタイム識別子 -->
+    <RuntimeIdentifier>win-x64</RuntimeIdentifier>
+    
+    <!-- ポータブル実行時の設定 -->
+    <TieredCompilation>true</TieredCompilation>
+    <TieredPGO>true</TieredPGO>
+    
+    <!-- 依存関係の設定 -->
+    <UseWindowsForms>false</UseWindowsForms>
+    <WindowsPackageType>None</WindowsPackageType>
+  </PropertyGroup>
+
+  <!-- 複数プラットフォーム対応 -->
+  <PropertyGroup Condition="'$(RuntimeIdentifier)' == 'win-x86'">
+    <PlatformTarget>x86</PlatformTarget>
+  </PropertyGroup>
+  
+  <PropertyGroup Condition="'$(RuntimeIdentifier)' == 'win-x64'">
+    <PlatformTarget>x64</PlatformTarget>
+  </PropertyGroup>
+  
+  <PropertyGroup Condition="'$(RuntimeIdentifier)' == 'win-arm64'">
+    <PlatformTarget>ARM64</PlatformTarget>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+  </ItemGroup>
+  <!-- リソースファイルの組み込み -->
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\**\*" />
+  </ItemGroup>
+
+  <!-- アプリケーションアイコンファイル -->
+  <ItemGroup>
+    <Content Include="Resources\translator-icon.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+</Project>
