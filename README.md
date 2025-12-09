@@ -247,5 +247,5 @@ JapaneseEnglishTranslator/
 ---
 
 **開発者**: Hiroshi Nakajima
-**バージョン**: 1.0.0  
+**バージョン**: 1.0.0.0  
 **最終更新**: 2025年12月
